@@ -1,0 +1,43 @@
+// shows Linux information
+$ uname
+// shows all information about the Linux OS
+$ uname -a
+// shows processing information, ps is short for process status
+$ ps
+// prints all processes owned by a user named "x" as well as printing all processes that would be selected by the -a option
+$ ps -aux
+// -e selects all process identical to -A. a is for all processes except to -A and f does full-format listing
+$ ps -eaf
+// to kill the process
+$ kill <pid>
+// shows all services running described in /etc/init.d/<servicename.conf>
+$ service --status-all 
+// ifconfig is helpful to find the ip address of your system / to configure a network interface
+$ ifconfig
+// head -10 shows output of first 10 lines in a file
+$ head - 10
+// tail -10 shows output of last 10 lines in a file
+$ tail -10
+// tail commands with f follows the output. It's really helpful to follow along with logs output if it keeps updating
+$ tail -f
+// grep is used to find words in documents or in general
+// -i means case insensitive 
+$ grep -i <word> <filename>
+// -c shows the count on how many times the word has appeared
+$ grep -c <word> <filename>
+// shows manual for the commands you enter 
+$ man <command>
+// compares two files
+$ comm <filename1> <filename2>
+// compares two files but supresses 3rd(first in reading) line
+$ comm -3 <filename1> <filename2>
+// compares two files, but also shows where differences occur
+$ diff <filename1> <filename2>
+// compares two files, with some sorting 
+$ diff -c <filename1> <filename2>
+// compares two files, but also shows where differences occur
+$ diff -u <filename1> <filename2>
+// saves differences and commons of two files in new file with some sorting
+$ diff -Nauf <filename1> <filename2> > <newfilename>
+// patch helps to append small changes to older files/ program
+$ patch < <newfilename> (from diff)

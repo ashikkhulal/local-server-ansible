@@ -1,0 +1,53 @@
+Tools:
+
+chocolatey
+vagrant version: 2.2.10
+virtualbox version: 6.1.16
+gitbash
+vscode
+
+In windows, commands and steps: (run powershell as an administrator)
+1. Installing chocolatey:
+    Follow the link: https://chocolatey.org/install
+2. Installing virtualbox (version: 6.1.16):
+    > choco install virtualbox --version=6.1.16
+3. Installing vagrant (version: 2.2.10):
+    > choco install vagrant --version=2.2.10
+4. Installing git:
+   > choco install git
+5. Installing visualstudio code:
+    Follow the link: https://code.visualstudio.com/download
+
+Installing and patching server:
+
+1. Create your project folder then open VScode as an administrator and open folder in VScode
+2. In Terminal tab, open new terminal and switch to git bash (if not default). (you can kill the other terminal if you want)
+3. Provisioning local servers (makesure you are in same pwd as Vagrantfile):
+   $ vagrant up
+   Hint: you can open virtual box and see the server coming up
+4. SSH into the master servers (for example):
+    $ vagrant ssh master
+5. Update and upgrade packages:
+    $ sudo apt update -y
+    $ sudo apt upgrade -y
+    $ sudo apt install software-properties-common -y 
+6. Installing Ansible:
+    $ sudo apt-add-repository ppa:ansible/ansible -y
+    $ sudo apt update -y 
+    $ sudo apt install ansible -y
+7. Check Ansible version:
+    $ ansible --version
+8. Configure sshd_config file to allow access in master:
+    $ sudo vim /etc/ssh/sshd_config
+    and enable PasswordAuthentication and disable PubKeyAuthentication
+9. To copy ssh key to master server, go to worker node and then run:
+    $ su sudo
+    $ adduser <username>
+    $ usermod -aG sudo <username> 
+    $ ssh-keygen -t rsa 
+    $ sudo vim /etc/ssh/sshd_config
+    and enable PasswordAuthentication and disable PubKeyAuthentication
+10. Go to masters and add the worker node in /etc/ansible/hosts. To check hosts added, run:
+    $ ansible --list-host all
+11. Ping the hosts from master:
+    $ ansible all -m ping 
