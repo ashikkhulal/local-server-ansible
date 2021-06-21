@@ -1,0 +1,1 @@
+This repo contains a local setup for the linux patching project using Virtualbox, Vagrant and Ansible (automated).
